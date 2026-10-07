@@ -71,10 +71,11 @@ function getColor(value) {
 
 function style(feature){
     return {
-        fillColor: getColor(feature.properties.pop_den),   // pop_den is the field name for the population density data
+        fillColor: getColor(feature.properties.PopDen),   // PopDen is the field name for the population density data
         weight: 2,
         opacity: 1,
-        color: 'gray',
+        color: 'white',
+        dashArray: '5, 5',    // <--- Adds the dashed line (dash, gap in pixels)
         fillOpacity: 0.9
     };
 }
