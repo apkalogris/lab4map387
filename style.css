@@ -1,6 +1,10 @@
 h1 {
   font-family: "Noto Sans", Helvetica, sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #6baed6;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: inline-block; /* Wraps the background tightly around the text */
 }
