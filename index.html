@@ -82,6 +82,13 @@ function style(feature){
         
 var boroughs = L.geoJson(data, {style:style}).addTo(map);
 
+var nasa = L.tileLayer.wms('https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?', {
+    layers: 'MERRA2_2m_Air_Temperature_Assimilated_Monthly',
+    format: 'image/png',
+    transparent: true,
+    opacity: 0.6,
+    attribution: 'Imagery courtesy of NASA EOSDIS GIBS'
+}).addTo(map);
             
 var legend = L.control({position: 'bottomright'}); // Try the other three corners if you like.
 
