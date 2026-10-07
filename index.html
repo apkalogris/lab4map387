@@ -80,7 +80,7 @@ function style(feature){
     };
 }
         
-var boroughs = L.geoJson(data, {style:style}).addTo(map);
+var communityareas = L.geoJson(data, {style:style}).addTo(map);
 
 var nasa = L.tileLayer.wms('https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?', {
     layers: 'MERRA2_2m_Air_Temperature_Assimilated_Monthly',
@@ -96,8 +96,8 @@ var basemaps = {
 };
 
 var overlaymaps = {
-    "London Boroughs": boroughs,
-    "NASA Imagery": nasa
+    "Chicago Community Area (Pop Density)": communityareas,
+    "NASA Imagery (2m Temp Monthly Average)": nasa
 };
             
 L.control.layers(basemaps, overlaymaps).addTo(map);
