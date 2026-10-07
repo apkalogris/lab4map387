@@ -62,36 +62,22 @@ var imagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/
 
             
 function getColor(value) {
-    return value > 12500 ? '#08519c':
-           value > 8000  ? '#3182bd':
-           value > 6000  ? '#6baed6':
-           value > 2000  ? '#bdd7e7':
-                         '#eff3ff';
+    return value > 139 ? '#54278f':
+           value > 87  ? '#756bb1':
+           value > 53  ? '#9e9ac8':
+           value > 32  ? '#cbc9e2':
+                         '#f2f0f7';
 }
 
 function style(feature){
     return {
-        fillColor: getColor(feature.properties.PopDen),   // pop_den is the field name for the population density data
+        fillColor: getColor(feature.properties.pop_den),   // pop_den is the field name for the population density data
         weight: 2,
         opacity: 1,
-        color: 'white',
-		dashArray: '5, 5',    // <--- Adds the dashed line (dash, gap in pixels)
+        color: 'gray',
         fillOpacity: 0.9
     };
 }
-            
-function highlightFeature(e) {
-    // Get access to the feature that was hovered through e.target
-    var feature = e.target;
-
-    // Set a thick grey border on the feature as mouseover effect
-    // Adjust the values below to change the highlighting styles of features on mouseover
-    // Check out https://leafletjs.com/reference.html#path for more options for changing style
-    feature.setStyle({
-        weight: 8,
-        color: '#ffffff',
-        fillOpacity: 0.7
-    });
         
 var boroughs = L.geoJson(data, {style:style}).addTo(map);
 
@@ -102,13 +88,6 @@ var nasa = L.tileLayer.wms('https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wm
     opacity: 0.6,
     attribution: 'Imagery courtesy of NASA EOSDIS GIBS'
 }).addTo(map);
-
-       // Bring the highlighted feature to front so that the border doesn’t clash with nearby states
-    // But not for IE, Opera or Edge, since they have problems doing bringToFront on mouseover
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        feature.bringToFront();
-    }
-}
 
 var basemaps = {
     "World Terrain": terrain,
